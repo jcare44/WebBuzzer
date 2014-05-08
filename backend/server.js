@@ -1,6 +1,6 @@
 var express = require('express');
 var hid = require('node-hid');
-var BuzzerController = require('./buzzer_manager');
+var BuzzerManager = require('./buzzer/buzzer_manager');
 
 var devices = [];
 var tmp = hid.devices();
