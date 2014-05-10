@@ -21,7 +21,7 @@ util.inherits(BuzzerController, buzzers.BuzzerController);
  * Turn on or off every led
  * @param boolean state  True to turn on, false to turn off
  */
-BuzzerController.prototype.leds = function(state) {
+BuzzerController.prototype.setLeds = function(state) {
 	if(state)
 	{
 		this.leds = [0xff, 0xff, 0xff, 0xff, 0xff, 0xff];
