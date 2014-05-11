@@ -1,0 +1,20 @@
+{
+  "name": "WebBuzzer",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jcare44/WebBuzzer",
+  "authors": [
+    "jcare44"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io": "0.9.x"
+  }
+}
