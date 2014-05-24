@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]>				<html lang="fr" class"ie6 old-ie">	<![endif]-->
+<!--[if (IE 7)&!(IEMobile)]>	<html lang="fr" class"ie7 old-ie">	<![endif]-->
+<!--[if (IE 8)&!(IEMobile)]>	<html lang="fr" class"ie8 old-ie">	<![endif]-->
+<!--[if (gt IE 8)&!(IEMobile)]>-->	<html lang="fr" data-ng-app="WebBuzzer">	<!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="author" content="Julien Care" />
+		<title>WebBuzzer</title>
+		<link href="/css/default.css" rel="stylesheet" media="screen" type="text/css" />
+	</head>
+	<body data-ng-controller="MainController">
+		<div id="buttons">
+			<input type="button" value="Init Players" 
+			data-ng-click="initPlayers();" />
+			<input type="button" value="Init Time" 
+			data-ng-click="initTime();" />
+		</div>
+
+		<div id="clock">
+			{{timer | date: 'mm:ss'}}
+		</div>
+
+		<div id="playerContainer">
+			<div class="player {{player.class}}" 
+			data-ng-repeat="player in players"></div>
+		</div>
+	</body>
+
+	<script src="/js/socket.io.min.js"></script>
+	<script src="/js/angular.min.js"></script>
+	<script src="/js/config.js"></script>
+	<script src="/js/index.min.js"></script>
+</html>

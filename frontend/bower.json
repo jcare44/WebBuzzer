@@ -1,0 +1,24 @@
+{
+  "name": "WebBuzzer",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jcare44/WebBuzzer",
+  "authors": [
+    "jcare44"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "0.9.x",
+    "angular": "1.2.x",
+    "bootstrap": "3.1.x",
+    "angular-socket-io": "0.6.x",
+    "angular-loading-bar": "0.4.x"
+  }
+}
