@@ -1,6 +1,6 @@
 {
   "name": "WebBuzzer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/jcare44/WebBuzzer",
   "authors": [
     "jcare44"
@@ -19,6 +19,6 @@
     "angular": "1.2.x",
     "bootstrap": "3.1.x",
     "angular-socket-io": "0.6.x",
-    "angular-loading-bar": "~0.4.2"
+    "angular-loading-bar": "0.4.x"
   }
 }
