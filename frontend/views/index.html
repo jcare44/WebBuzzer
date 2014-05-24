@@ -10,7 +10,7 @@
 		<title>WebBuzzer</title>
 		<link href="/css/default.css" rel="stylesheet" media="screen" type="text/css" />
 	</head>
-	<body>
+	<body data-ng-controller="MainController">
 		<div id="clock">
 			23:20
 		</div>
@@ -20,6 +20,7 @@
 		</div>
 	</body>
 
+	<script src="/js/socket.io.min.js"></script>
 	<script src="/js/angular.min.js"></script>
 	<script src="/js/config.js"></script>
 	<script src="/js/index.min.js"></script>

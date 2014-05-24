@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 					'backend/**/*.js'
 				],
 				tasks: [
-					'ngconstant:'+config.server.mode,
+					'ngconstant',
 					'jshint:backend',
 				],
 				options: {
@@ -130,47 +130,37 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'frontend/public/js/index.min.js': ['frontend/js/index.js'],
-					//'frontend/public/js/login.min.js': ['frontend/login.js'],
 					'frontend/public/js/angular.min.js': [
 						'frontend/bower_components/angular/angular.js',
-						//'frontend/bower_components/angular-ui-router/release/angular-ui-router.js',
-						//'frontend/bower_components/angular-cookies/angular-cookies.js'
+						'frontend/bower_components/angular-socket-io/socket.js',
+					],
+					'frontend/public/js/socket.io.min.js': [
+						'frontend/bower_components/socket.io-client/dist/socket.io.js'
 					],
 				}
 			},
 			prod: {
 				files: {
 					'frontend/public/js/index.min.js': ['frontend/index.js'],
-					//'frontend/public/js/login.min.js': ['frontend/login.js'],
 					'frontend/public/js/angular.min.js': [
 						'frontend/bower_components/angular/angular.js',
-						//'frontend/bower_components/angular-ui-router/release/angular-ui-router.js',
-						//'frontend/bower_components/angular-cookies/angular-cookies.js'
-					],				
+						'frontend/bower_components/angular-socket-io/socket.js',
+					],
+					'frontend/public/js/socket.io.min.js': [
+						'frontend/bower_components/socket.io-client/dist/socket.io.js'
+					],
 				},
 			},
 		},
 		ngconstant: {
 			options: {
-				name: 'config',
+				name: 'WebBuzzer.config',
 				dest: 'frontend/public/js/config.js',
+			},
+			all: {
 				constants: {
 					server: config.server,
 				},
-					values: {
-					debug: true
-				}
-			},
-			dev: {
-				constants: {
-					title: 'grunt-ng-constant-dev'
-				},
-			},
-			prod: {
-				constants: {
-					title: 'grunt-ng-constant-prod',
-					debug: false
-				}
 			},
 		},
 	});
@@ -184,7 +174,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-ng-constant');
 
 	grunt.registerTask('backend', [
-		'ngconstant:'+config.server.mode,
+		'ngconstant',
 		//'jshint:backend',
 	]);
 
