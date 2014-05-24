@@ -12,11 +12,12 @@
 	</head>
 	<body data-ng-controller="MainController">
 		<div id="clock">
-			23:20
+			{{timer | date: 'mm:ss'}}
 		</div>
 
 		<div id="playerContainer">
-			<div class="player"></div>
+			<div class="player" data-ng-repeat="player in players" 
+			class="{{player.class}}"></div>
 		</div>
 	</body>
 

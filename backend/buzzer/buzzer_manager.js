@@ -77,7 +77,7 @@ function registerPlayer(_controllerId){
  * Launch init sequence
  * Every player can register his buzzer with the red button
  */
-BuzzerManager.prototype.startInit = function(){
+BuzzerManager.prototype.startInit = function(callback){
 	this.players = [];
 	console.info('Initialisation start');
 	for(var i=0;i<this.controllers.length;++i)
@@ -85,18 +85,28 @@ BuzzerManager.prototype.startInit = function(){
 		console.log(i);
 		this.controllers[i].on('button',registerPlayer(i).bind(this));
 	}
+
+	if(callback)
+	{
+		callback.call(this);
+	}
 };
 
 /**
  * Stop the init sequence
  */
-BuzzerManager.prototype.stopInit = function(){
+BuzzerManager.prototype.stopInit = function(callback){
 	console.info('Initialisation stop');
 	for(var i=0;i<this.controllers.length;++i)
 	{
 		this.controllers[i].removeAllListeners();
 		this.controllers[i].setLeds(false);
 		this.controllers[i].on('button',fireEvent(i).bind(this));
+	}
+
+	if(callback)
+	{
+		callback.call(this);
 	}
 };
 
@@ -117,6 +127,10 @@ BuzzerManager.prototype.getPlayerId = function(_controllerId,_buzzerId){
 		}
 	}
 	return false;
+};
+
+BuzzerManager.prototype.getNbPlayers = function(){
+	return this.players.length;
 };
 
 module.exports = BuzzerManager;
