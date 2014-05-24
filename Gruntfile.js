@@ -91,6 +91,12 @@ module.exports = function(grunt) {
 				src: 'frontend/views/*',
 				dest: 'frontend/public/'
 			},
+			images: {
+				expand: true,
+				flatten: true,
+				src: 'frontend/images/*',
+				dest: 'frontend/public/images/'
+			},
 		},
 		less: {
 			dev: {

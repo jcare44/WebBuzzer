@@ -1,9 +1,19 @@
 @import "../bower_components/bootstrap/less/bootstrap.less";
 
 @icon-font-path: '/fonts/';
+@images-path: '/images/';
+
+@blue: #428bca;
+@green: #5cb85c;
+@yellow: #5bc0de;
+@orange: #f0ad4e;
+@red: #d9534f;
+@grey: #ddd;
+
 
 body{
 	.container;
+	background: url("@{images-path}gplaypattern.png") repeat;
 }
 
 input[type=button],
@@ -11,3 +21,23 @@ input[type=submit]{
 	.btn;
 	.btn-default;
 }
+
+#clock{
+	width: 100%;
+	max-width: 100%;
+	font-size: 20em;
+	text-align: center;
+}
+
+#playerContainer{
+	margin: 0 auto;
+	text-align: center;
+}
+
+	.player{
+		background-color: @grey;
+		display: inline-block;
+		height: 100px;
+		margin: 1% 2%;
+		width: 20%;
+	}
