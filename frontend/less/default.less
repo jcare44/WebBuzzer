@@ -31,8 +31,11 @@ body{
 #clock{
 	width: 100%;
 	max-width: 100%;
-	font-size: 20em;
 	text-align: center;
+	font-size: 8em;
+	@media (min-width: @screen-md-min){
+		font-size: 20em;
+	}
 }
 
 #playerContainer{

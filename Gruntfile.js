@@ -104,7 +104,10 @@ module.exports = function(grunt) {
 					paths: ["css"]
 				},
 				files: {
-					"frontend/public/css/default.css": "frontend/less/default.less"
+					"frontend/public/css/default.css": [
+						"frontend/less/default.less",
+						"frontend/bower_components/angular-loading-bar/build/loading-bar.css",
+					]
 				}
 			},
 			prod: {
@@ -113,7 +116,10 @@ module.exports = function(grunt) {
 					cleancss: true,
 				},
 				files: {
-					"frontend/public/css/default.css": "frontend/less/default.less"
+					"frontend/public/css/default.css": [
+						"frontend/less/default.less",
+						"frontend/bower_components/angular-loading-bar/build/loading-bar.css",
+					]
 				}
 			}
 		},
@@ -133,6 +139,7 @@ module.exports = function(grunt) {
 					'frontend/public/js/angular.min.js': [
 						'frontend/bower_components/angular/angular.js',
 						'frontend/bower_components/angular-socket-io/socket.js',
+						'frontend/bower_components/angular-loading-bar/build/loading-bar.js',
 					],
 					'frontend/public/js/socket.io.min.js': [
 						'frontend/bower_components/socket.io-client/dist/socket.io.js'
@@ -145,6 +152,7 @@ module.exports = function(grunt) {
 					'frontend/public/js/angular.min.js': [
 						'frontend/bower_components/angular/angular.js',
 						'frontend/bower_components/angular-socket-io/socket.js',
+						'frontend/bower_components/angular-loading-bar/build/loading-bar.js',
 					],
 					'frontend/public/js/socket.io.min.js': [
 						'frontend/bower_components/socket.io-client/dist/socket.io.js'

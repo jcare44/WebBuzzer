@@ -3,10 +3,10 @@ angular.module('WebBuzzer.factories', ['WebBuzzer.config','btford.socket-io'])
 	return socketFactory();
 }]);
 
-angular.module('WebBuzzer.controllers', ['WebBuzzer.config','WebBuzzer.factories'])
+angular.module('WebBuzzer.controllers', ['WebBuzzer.config','WebBuzzer.factories','cfp.loadingBar'])
 .controller('MainController',
-	['$scope','$interval','server','socket',
-	function($scope,$interval,server,socket){
+	['$scope','$interval','server','socket','cfpLoadingBar',
+	function($scope,$interval,server,socket,cfpLoadingBar){
 		$interval(function(){
 			if($scope.startDate)
 			{
@@ -36,11 +36,18 @@ angular.module('WebBuzzer.controllers', ['WebBuzzer.config','WebBuzzer.factories
 		$scope.initPlayers = function(){
 			console.log('player init');
 			socket.emit('initPlayers');
-			/*$scope.initPlayers = true;
+
+			cfpLoadingBar.start();
+			var loadStart = new Date().getTime();
+
+			$interval(function(){
+				cfpLoadingBar.set(
+					(new Date().getTime() - loadStart)/10000);
+			},1000,9)
 			socket.once('update',function(){
-				$scope.initPlayers = false;
-				console.log('once');
-			});*/
+				cfpLoadingBar.complete();
+				console.log('player init complete');
+			});
 		};
 
 		$scope.initTime = function(){

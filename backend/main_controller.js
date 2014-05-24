@@ -9,22 +9,24 @@ function MainController(manager,sockets){
 		socket.on('ask',self.update.bind(self));
 		socket.on('initTime',self.initTime.bind(self));
 		socket.on('initPlayers',self.initPlayers.bind(self));
+	});
 
-		manager.on('button',function(playerId,buttonId){
-			switch(buttonId){
-				case manager.GREEN_BUTTON:
-					self.state.players[playerId].class = 'green';
-					break;
-				case manager.ORANGE_BUTTON:
-					self.state.players[playerId].class = 'orange';
-					break;
-				case manager.RED_BUTTON:
-					self.state.players[playerId].class = 'red';
-					break;
-			}
+	self._manager.on('button',function(playerId,buttonId){
+		switch(buttonId){
+			case manager.GREEN_BUTTON:
+				self.state.players[playerId].class = 'green';
+				break;
+			case manager.ORANGE_BUTTON:
+				self.state.players[playerId].class = 'orange';
+				break;
+			case manager.RED_BUTTON:
+				self.state.players[playerId].class = 'red';
+				break;
+			default:
+				self.state.players[playerId].class = '';
+		}
 
-			self.update.call(self);
-		});
+		self.update.call(self);
 	});
 }
 
@@ -47,7 +49,7 @@ MainController.prototype.initPlayers = function(callback){
 					callback.call(this);
 				}
 			});
-		},5000);
+		},10000);
 	});
 };
 
