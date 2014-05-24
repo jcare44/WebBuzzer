@@ -14,13 +14,19 @@
 body{
 	.container;
 	background: url("@{images-path}gplaypattern.png") repeat;
+	padding-top: 50px;
 }
 
-input[type=button],
-input[type=submit]{
-	.btn;
-	.btn-default;
+#buttons{
+	text-align: center;
 }
+
+	input[type=button],
+	input[type=submit]{
+		.btn;
+		.btn-default;
+		.btn-lg;
+	}
 
 #clock{
 	width: 100%;
@@ -40,4 +46,16 @@ input[type=submit]{
 		height: 100px;
 		margin: 1% 2%;
 		width: 20%;
+	}
+
+	.red{
+		background-color: @red;
+	}
+
+	.green{
+		background-color: @green;
+	}
+
+	.orange{
+		background-color: @orange;
 	}

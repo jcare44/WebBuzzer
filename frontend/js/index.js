@@ -32,6 +32,21 @@ angular.module('WebBuzzer.controllers', ['WebBuzzer.config','WebBuzzer.factories
 				console.info('disconnected');
 			});
 		});
+
+		$scope.initPlayers = function(){
+			console.log('player init');
+			socket.emit('initPlayers');
+			/*$scope.initPlayers = true;
+			socket.once('update',function(){
+				$scope.initPlayers = false;
+				console.log('once');
+			});*/
+		};
+
+		$scope.initTime = function(){
+			console.log('time init');
+			socket.emit('initTime');
+		};
 	}]);
 
 angular.module('WebBuzzer', ['WebBuzzer.controllers','WebBuzzer.config']);

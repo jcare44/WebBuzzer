@@ -14,6 +14,4 @@ server.listen(config.server.port);
 
 app.use('/',router());
 
-io.sockets.on('connection', function (socket) {
-	var controller = new MainController(manager,socket);
-});
+var controller = new MainController(manager,io.sockets);

@@ -1,28 +1,30 @@
-function MainController(manager,socket){
+function MainController(manager,sockets){
 	this._manager = manager;
-	this._socket = socket;
+	this._sockets = sockets;
 	this.state = {};
 
 	var self = this;
 
-	socket.on('ask',self.update.bind(self));
-	socket.on('initTime',self.initTime.bind(self));
-	socket.on('initPlayers',self.initPlayers.bind(self));
+	self._sockets.on('connection', function (socket) {
+		socket.on('ask',self.update.bind(self));
+		socket.on('initTime',self.initTime.bind(self));
+		socket.on('initPlayers',self.initPlayers.bind(self));
 
-	manager.on('button',function(playerId,buttonId){
-		switch(buttonId){
-			case manager.GREEN_BUTTON:
-				self.state.players[playerId].class = 'green';
-				break;
-			case manager.ORANGE_BUTTON:
-				self.state.players[playerId].class = 'orange';
-				break;
-			case manager.RED_BUTTON:
-				self.state.players[playerId].class = 'red';
-				break;
-		}
+		manager.on('button',function(playerId,buttonId){
+			switch(buttonId){
+				case manager.GREEN_BUTTON:
+					self.state.players[playerId].class = 'green';
+					break;
+				case manager.ORANGE_BUTTON:
+					self.state.players[playerId].class = 'orange';
+					break;
+				case manager.RED_BUTTON:
+					self.state.players[playerId].class = 'red';
+					break;
+			}
 
-		self.update();
+			self.update.call(self);
+		});
 	});
 }
 
@@ -51,11 +53,19 @@ MainController.prototype.initPlayers = function(callback){
 
 MainController.prototype.initTime = function(){
 	this.state.startDate = new Date().getTime();
+	this.state.players = [];
+	for(var i=0;i<this._manager.getNbPlayers();++i)
+	{
+		this.state.players.push({
+			id: i
+		});
+	}
+
 	this.update();
 };
 
 MainController.prototype.update = function(){
-	this._socket.emit('update',this.state);
+	this._sockets.emit('update',this.state);
 	console.log('update');
 };
 
