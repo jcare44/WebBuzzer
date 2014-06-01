@@ -1,7 +1,6 @@
 var forever = require('forever-monitor');
 
 var child = new (forever.Monitor)(__dirname + '/server.js', {
-	max: 10
 });
 
 child.on('exit', function () {
