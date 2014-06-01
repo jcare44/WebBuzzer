@@ -11,7 +11,7 @@
 		<link href="/css/default.css" rel="stylesheet" media="screen" type="text/css" />
 	</head>
 	<body data-ng-controller="MainController">
-		<div id="clock">
+		<div id="clock" data-ng-show="displayTime">
 			{{timer | date: 'mm:ss'}}
 		</div>
 

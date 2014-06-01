@@ -18,7 +18,7 @@
 			data-ng-click="initTime();" />
 		</div>
 
-		<div id="clock">
+		<div id="clock" data-ng-show="displayTime">
 			{{timer | date: 'mm:ss'}}
 		</div>
 

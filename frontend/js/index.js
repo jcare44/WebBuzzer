@@ -7,6 +7,8 @@ angular.module('WebBuzzer.controllers', ['WebBuzzer.config','WebBuzzer.factories
 .controller('MainController',
 	['$scope','$interval','server','socket','cfpLoadingBar',
 	function($scope,$interval,server,socket,cfpLoadingBar){
+		$scope.displayTime = server.displayTime;
+
 		$interval(function(){
 			if($scope.startDate)
 			{
@@ -43,7 +45,7 @@ angular.module('WebBuzzer.controllers', ['WebBuzzer.config','WebBuzzer.factories
 			$interval(function(){
 				cfpLoadingBar.set(
 					(new Date().getTime() - loadStart)/10000);
-			},1000,9)
+			},1000,9);
 			socket.once('update',function(){
 				cfpLoadingBar.complete();
 				console.log('player init complete');

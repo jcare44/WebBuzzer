@@ -6,6 +6,7 @@ module.exports = {
 		name: env('NODE_SERVER_NAME','WebBuzzer'),
 		domain: env('NODE_SERVER_DOMAIN',ip.address()),
 		port: env.int('NODE_SERVER_PORT',8080),
-		mode: env('SERVER_MODE','prod')
+		mode: env('SERVER_MODE','prod'),
+		displayTime: env.bool('SERVER_DISPLAY_TIME',true)
 	}
 };
