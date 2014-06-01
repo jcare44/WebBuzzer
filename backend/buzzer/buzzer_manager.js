@@ -83,6 +83,7 @@ BuzzerManager.prototype.startInit = function(callback){
 	for(var i=0;i<this.controllers.length;++i)
 	{
 		console.log(i);
+		this.controllers[i].removeAllListeners();
 		this.controllers[i].on('button',registerPlayer(i).bind(this));
 	}
 

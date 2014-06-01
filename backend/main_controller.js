@@ -12,18 +12,26 @@ function MainController(manager,sockets){
 	});
 
 	self._manager.on('button',function(playerId,buttonId){
-		switch(buttonId){
-			case manager.GREEN_BUTTON:
-				self.state.players[playerId].class = 'green';
-				break;
-			case manager.ORANGE_BUTTON:
-				self.state.players[playerId].class = 'orange';
-				break;
-			case manager.RED_BUTTON:
-				self.state.players[playerId].class = 'red';
-				break;
-			default:
-				self.state.players[playerId].class = '';
+		if(!self.state.players[playerId].class){
+			switch(buttonId){
+				case manager.GREEN_BUTTON:
+					self.state.players[playerId].class = 'green';
+					break;
+				case manager.ORANGE_BUTTON:
+					self.state.players[playerId].class = 'orange';
+					break;
+				case manager.RED_BUTTON:
+					self.state.players[playerId].class = 'red';
+					break;
+				case manager.YELLOW_BUTTON:
+					self.state.players[playerId].class = 'yellow';
+					break;
+				case manager.BLUE_BUTTON:
+					self.state.players[playerId].class = 'blue';
+					break;
+				default:
+					self.state.players[playerId].class = '';
+			}
 		}
 
 		self.update.call(self);
