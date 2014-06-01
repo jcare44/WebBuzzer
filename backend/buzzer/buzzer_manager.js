@@ -10,15 +10,9 @@ function BuzzerManager(){
 	this.ORANGE_BUTTON = 3;
 	this.BLUE_BUTTON = 4;
 
-	this.devices = hid.devices(1356,2);
 	this.controllers = [];
 
 	events.EventEmitter.call(this);
-
-	for(var i=0;i<this.devices.length;++i)
-	{
-		this.controllers[i] = new BuzzerController(this.devices[i].path);
-	}
 }
 util.inherits(BuzzerManager, events.EventEmitter);
 
@@ -78,12 +72,23 @@ function registerPlayer(_controllerId){
  * Every player can register his buzzer with the red button
  */
 BuzzerManager.prototype.startInit = function(callback){
-	this.players = [];
 	console.info('Initialisation start');
 	for(var i=0;i<this.controllers.length;++i)
 	{
-		console.log(i);
 		this.controllers[i].removeAllListeners();
+	}
+
+	this.devices = hid.devices(1356,2);
+	this.controllers = [];
+
+	for(i=0;i<this.devices.length;++i)
+	{
+		this.controllers[i] = new BuzzerController(this.devices[i].path);
+	}
+
+	this.players = [];
+	for(i=0;i<this.controllers.length;++i)
+	{
 		this.controllers[i].on('button',registerPlayer(i).bind(this));
 	}
 
