@@ -33,4 +33,13 @@ BuzzerController.prototype.setLeds = function(state) {
 	this.hid.write(this.leds);
 };
 
+BuzzerController.prototype.originalBuzzerData = BuzzerController.prototype.buzzerData;
+
+BuzzerController.prototype.buzzerData = function(error,data){
+	if(!error)
+	{
+		BuzzerController.prototype.originalBuzzerData.call(this,error,data);
+	}
+};
+
 module.exports = BuzzerController;
