@@ -1,7 +1,15 @@
 {
   "name": "WebBuzzer",
-  "version": "0.2.0",
+  "description": "WebApp displaying PlayStation buzzer votes (usefull for quizz or votes)",
+  "repository": "https://github.com/jcare44/WebBuzzer",
+  "version": "0.2.1",
   "author": "Julien Caré",
+  "license": "MIT",
+  "scripts": {
+    "install": "cd frontend && bower install",
+    "postinstall": "grunt --force default",
+    "start": "node backend/server.js"
+  },
   "dependencies": {
     "async": "0.7.x",
     "express": "4.1.x",

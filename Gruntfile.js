@@ -148,7 +148,7 @@ module.exports = function(grunt) {
 			},
 			prod: {
 				files: {
-					'frontend/public/js/index.min.js': ['frontend/index.js'],
+					'frontend/public/js/index.min.js': ['frontend/js/index.js'],
 					'frontend/public/js/angular.min.js': [
 						'frontend/bower_components/angular/angular.js',
 						'frontend/bower_components/angular-socket-io/socket.js',

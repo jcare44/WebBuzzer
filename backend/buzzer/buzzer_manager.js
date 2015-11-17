@@ -12,6 +12,7 @@ function BuzzerManager(){
 
 	this.devices = hid.devices(1356,2);
 	this.controllers = [];
+	this.players = [];
 
 	events.EventEmitter.call(this);
 
@@ -112,7 +113,7 @@ BuzzerManager.prototype.stopInit = function(callback){
 
 /**
  * Search for the id of a player
- * 
+ *
  * @param  int _controllerId
  * @param  int _buzzerId
  * @return int|boolean			Return the id if found, else return false
